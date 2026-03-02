@@ -1,0 +1,16 @@
+{
+  "frontend/src/index.css": "Global styles defining the dark biometric theme with OKLCH color tokens, JetBrains Mono and Orbitron fonts, custom utility classes for cyan/green glow effects, circuit-board background pattern, and keyframe animations for scanning, pulsing, and fade-in effects.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with Orbitron/JetBrains Mono fonts, biometric color palette (bio-cyan, bio-green, bio-surface variants), custom glow box-shadows, and animation keyframes for the biometric UI.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations: fetching/saving caller user profile, fetching login history by principal, recording login events, and registering new users.",
+  "frontend/src/components/Layout.tsx": "App shell component with sticky header (BioAuth logo, auth status indicator, login button) and footer with attribution link, wrapping all pages in the dark biometric theme.",
+  "frontend/src/components/LoginButton.tsx": "Authentication button using useInternetIdentity hook that shows Login/Logout states with biometric-themed styling, clears query cache on logout.",
+  "frontend/src/components/StepIndicator.tsx": "Reusable step progress component supporting horizontal/vertical orientations and sm/md/lg sizes, with cyan active and green completed states and glow effects.",
+  "frontend/src/components/FaceScanComponent.tsx": "Live webcam face capture component that auto-starts the camera on mount to immediately trigger the browser's permission prompt; shows a prominent \"Allow Camera Access\" button if the prompt hasn't fired yet, displays clear permission-denied instructions with a retry button, and shows loading/error/success states throughout the scan flow.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time authenticated users to register their display name, using useSaveCallerUserProfile mutation with biometric-themed styling.",
+  "frontend/src/components/DashboardSummaryCards.tsx": "Four stat cards displaying total logins, last login time, primary auth method, and security score, calculated from login history data with cyan/green glow styling.",
+  "frontend/src/components/LoginHistoryTable.tsx": "Scrollable table showing chronological login events with timestamp, auth method (with icons), and status columns, with loading skeletons and empty state.",
+  "frontend/src/pages/LandingPage.tsx": "Landing page with hero section, animated CTA button, three-step authentication flow visualization, and feature highlights using generated assets and biometric theme.",
+  "frontend/src/pages/BiometricScanPage.tsx": "Face scan page that is now the default entry point for unauthenticated users; removed the back button (no longer needed as entry point), and the Continue button navigates to `/dashboard` after a successful scan.",
+  "frontend/src/pages/DashboardPage.tsx": "Authenticated dashboard showing user profile card, summary stat cards, and login history table; records a login event on load and redirects unauthenticated users.",
+  "frontend/src/App.tsx": "Main app with TanStack Router; root route (`/`) now redirects authenticated users to `/dashboard` and unauthenticated users directly to `/biometric-scan`, removing the intermediate landing page. Landing page is still accessible at `/landing`."
+}

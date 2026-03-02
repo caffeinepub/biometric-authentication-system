@@ -1,0 +1,37 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T10:05:50.538Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-9",
+        "summary": "Update FaceScanComponent so that it calls `navigator.mediaDevices.getUserMedia({ video: true })` immediately on component mount (inside a useEffect with an empty dependency array), triggering the browser's native camera permission prompt as soon as the face scan section is rendered — without requiring any user interaction such as clicking a button first. If permission is granted, the live video feed must start automatically. If permission is denied, display a clear error message instructing the user to allow camera access in their browser settings.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/FaceScanComponent.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/FaceScanComponent.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/FaceScanComponent.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

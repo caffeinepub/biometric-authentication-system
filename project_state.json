@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Building a live-presentable Biometric Authentication System web app with webcam face capture (camera access must work directly in browser on page load), WebAuthn/fingerprint login, Internet Identity passkey authentication, login event dashboard, and professional UI using Motoko backend and React/TypeScript frontend on Internet Computer. User flow: click link → dashboard opens → face scan feature is immediately accessible.",
+  "architectural_notes": [
+    "Backend: Motoko canisters on Internet Computer for tamper-resistant storage",
+    "Frontend: React/TypeScript with browser WebAuthn API and webcam capture",
+    "Authentication: Internet Identity passkeys (no central password database)",
+    "Camera/webcam access should be requested immediately on the face scan page load without requiring extra user navigation steps"
+  ],
+  "known_issues": [
+    "True iris scanning or raw biometric template processing is not feasible in a browser app; webcam face capture is a visual mock-up only",
+    "Camera access not working in current build; needs to be available directly when user opens the app link in browser"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-passkey-authentication-on-the-frontend-using-the-existing-useinternetidentity-hook-so-users-can-log-in-with-device-biometrics-fingerprint-face-id-or-passkeys-fully-passwordless",
+      "title": "Implement Internet Identity passkey authentication on the frontend using the existing useInternetIdentity hook so users can log in with device biometrics (fingerprint, Face ID) or passkeys — fully passwordless.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-live-webcam-face-capture-component-on-the-frontend-that-accesses-the-device-camera-via-the-browser-mediadevices-api-displays-a-live-video-feed-inside-a-styled-scanning-frame-and-simulates-a-biometric-scan-animation-progress-ring-or-pulsing-overlay-when-the-user-initiates-a-scan-face-action-this-is-a-visual-demonstration-mock-up-no-actual-ml-face-recognition-is-performed",
+      "title": "Build a live webcam face-capture component on the frontend that accesses the device camera via the browser MediaDevices API, displays a live video feed inside a styled scanning frame, and simulates a biometric scan animation (progress ring or pulsing overlay) when the user initiates a 'Scan Face' action. This is a visual demonstration mock-up — no actual ML face recognition is performed.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-authenticated-dashboard-page-that-displays-the-logged-in-user-s-profile-information-and-a-chronological-table-of-their-login-events-timestamp-authentication-method-the-dashboard-should-also-show-a-summary-stat-card-e-g-total-logins-last-login-time",
+      "title": "Build an authenticated dashboard page that displays the logged-in user's profile information and a chronological table of their login events (timestamp, authentication method). The dashboard should also show a summary stat card (e.g., total logins, last login time).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-and-apply-a-cohesive-visual-theme-across-the-entire-app-suitable-for-a-live-security-tech-presentation-dark-background-with-high-contrast-cyan-green-biometric-style-accents-monospace-or-technical-typography-glowing-border-effects-on-key-ui-elements-and-a-clean-step-by-step-authentication-flow-layout-that-an-audience-can-easily-follow-on-a-projected-screen",
+      "title": "Design and apply a cohesive visual theme across the entire app suitable for a live security-tech presentation: dark background with high-contrast cyan/green biometric-style accents, monospace or technical typography, glowing border effects on key UI elements, and a clean step-by-step authentication flow layout that an audience can easily follow on a projected screen.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-landing-intro-page-that-presents-the-app-as-a-biometric-authentication-system-demo-briefly-explains-the-three-authentication-steps-face-scan-passkey-login-dashboard-access-and-provides-a-clear-entry-point-to-start-the-demo-flow",
+      "title": "Create a landing/intro page that presents the app as a Biometric Authentication System demo, briefly explains the three authentication steps (Face Scan → Passkey Login → Dashboard Access), and provides a clear entry point to start the demo flow.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-webcam-camera-access-flow-so-that-when-a-user-opens-the-app-link-in-the-browser-they-land-directly-on-the-dashboard-and-the-face-scan-feature-is-immediately-accessible-without-any-extra-steps-the-facescancomponent-must-request-camera-permission-via-mediadevices-api-as-soon-as-the-face-scan-section-is-visible-not-gated-behind-additional-navigation-or-button-presses-if-the-browser-has-already-granted-camera-permission-the-live-video-feed-should-start-automatically",
+      "title": "Fix the webcam/camera access flow so that when a user opens the app link in the browser, they land directly on the dashboard and the face scan feature is immediately accessible without any extra steps. The FaceScanComponent must request camera permission (via MediaDevices API) as soon as the face scan section is visible — not gated behind additional navigation or button presses. If the browser has already granted camera permission, the live video feed should start automatically.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-react-router-configuration-in-app-tsx-so-the-default-route-leads-the-user-directly-into-the-face-scan-or-dashboard-flow-removing-any-intermediate-landing-page-step-that-blocks-immediate-access-to-the-camera-face-scan-feature",
+      "title": "Update the React Router configuration in App.tsx so the default route ('/') leads the user directly into the face scan or dashboard flow, removing any intermediate landing page step that blocks immediate access to the camera/face scan feature.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-facescancomponent-so-that-it-calls-navigator-mediadevices-getusermedia-video-true-immediately-on-component-mount-inside-a-useeffect-with-an-empty-dependency-array-triggering-the-browser-s-native-camera-permission-prompt-as-soon-as-the-face-scan-section-is-rendered-without-requiring-any-user-interaction-such-as-clicking-a-button-first-if-permission-is-granted-the-live-video-feed-must-start-automatically-if-permission-is-denied-display-a-clear-error-message-instructing-the-user-to-allow-camera-access-in-their-browser-settings",
+      "title": "Update FaceScanComponent so that it calls `navigator.mediaDevices.getUserMedia({ video: true })` immediately on component mount (inside a useEffect with an empty dependency array), triggering the browser's native camera permission prompt as soon as the face scan section is rendered — without requiring any user interaction such as clicking a button first. If permission is granted, the live video feed must start automatically. If permission is denied, display a clear error message instructing the user to allow camera access in their browser settings.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Live webcam face capture UI for visual biometric demo",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "WebAuthn-based fingerprint/Face ID login integration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Internet Identity passkey authentication (passwordless login)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Dashboard showing login events and timestamps",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Secure user profile storage in Motoko canisters",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Build a Motoko backend actor that stores registered user profiles (principal, display name, registration timestamp) and login event logs (principal, timestamp, method used). Expose methods to register a user, record a login event, and fetch login history for a principal.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Fix camera access so webcam launches directly in browser without extra steps; user flow: open link → dashboard → face scan feature immediately available",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Biometric Authentication System",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

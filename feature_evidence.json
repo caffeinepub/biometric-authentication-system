@@ -1,0 +1,25 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-facescancomponent-so-that-it-calls-navigator-mediadevices-getusermedia-video-true-immediately-on-component-mount-inside-a-useeffect-with-an-empty-dependency-array-triggering-the-browser-s-native-camera-permission-prompt-as-soon-as-the-face-scan-section-is-rendered-without-requiring-any-user-interaction-such-as-clicking-a-button-first-if-permission-is-granted-the-live-video-feed-must-start-automatically-if-permission-is-denied-display-a-clear-error-message-instructing-the-user-to-allow-camera-access-in-their-browser-settings",
+      "featureTitle": "Update FaceScanComponent so that it calls `navigator.mediaDevices.getUserMedia({ video: true })` immediately on component mount (inside a useEffect with an empty dependency array), triggering the browser's native camera permission prompt as soon as the face scan section is rendered — without requiring any user interaction such as clicking a button first. If permission is granted, the live video feed must start automatically. If permission is denied, display a clear error message instructing the user to allow camera access in their browser settings.",
+      "files": [
+        "frontend/src/components/FaceScanComponent.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

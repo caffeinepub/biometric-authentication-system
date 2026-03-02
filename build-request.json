@@ -1,0 +1,40 @@
+{
+  "kind": "build_request",
+  "title": "Ensure app prompts for camera access on load",
+  "projectName": "Biometric Auth Demo",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Update FaceScanComponent so that it calls `navigator.mediaDevices.getUserMedia({ video: true })` immediately on component mount (inside a useEffect with an empty dependency array), triggering the browser's native camera permission prompt as soon as the face scan section is rendered — without requiring any user interaction such as clicking a button first. If permission is granted, the live video feed must start automatically. If permission is denied, display a clear error message instructing the user to allow camera access in their browser settings.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "make app ask for camera access"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Opening the app and navigating to the face scan section immediately triggers the browser camera permission dialog.",
+        "If camera permission is already granted, the live video feed starts automatically without any button press.",
+        "If camera permission is denied or unavailable, a visible error message is shown explaining how to enable camera access.",
+        "No additional button press or navigation step is required before the camera permission prompt appears."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/hooks/ (immutable paths).",
+    "Do not modify frontend/src/components/ui or frontend/src/main.tsx."
+  ],
+  "nonGoals": [
+    "Actual ML-based face recognition or biometric template processing.",
+    "Backend changes — this is a frontend-only camera access fix.",
+    "Changing the overall routing or page layout beyond what is needed for camera auto-prompt."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
